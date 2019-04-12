@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/RankingSimulator.iml" filepath="$PROJECT_DIR$/.idea/modules/RankingSimulator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/rankingsimulator-build.iml" filepath="$PROJECT_DIR$/.idea/modules/rankingsimulator-build.iml" />
+    </modules>
+  </component>
+</project>
