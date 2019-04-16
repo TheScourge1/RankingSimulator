@@ -8,7 +8,7 @@ import slick.jdbc.MySQLProfile.api._
 
 
   case class Player(id: Int,
-                    playerId: Int,
+                    playerId: String,
                     name: String,
                     rankDate: Date,
                     rank: String)
@@ -20,7 +20,7 @@ object Player{
     var formate = new SimpleDateFormat("dd/MM/yyyy")
     val result = new Player(
       0,
-      sequence(1).toInt,
+      sequence(1),
       sequence(0),
       new Date(formate.parse(sequence(2)).getTime()),
       sequence(3)
@@ -34,7 +34,7 @@ object Player{
 
     def id = column[Int]("id", O.PrimaryKey,O.AutoInc)
 
-    def playerId = column[Int]("player_id")
+    def playerId = column[String]("player_id")
 
     def name = column[String]("name")
 

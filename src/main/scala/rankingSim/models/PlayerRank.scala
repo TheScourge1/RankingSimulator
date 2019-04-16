@@ -7,7 +7,7 @@ import slick.lifted.Tag
 import slick.jdbc.MySQLProfile.api._
 
 
-case class PlayerRank(playerId: Int,
+case class PlayerRank(playerId: String,
                        points: Int,
                        last_dat: Date)
 
@@ -24,7 +24,7 @@ from PlayerRanking
 
 class PlayerRanks(tag: Tag) extends Table[PlayerRank](tag, "rank_saldo") {
 
-    def playerId = column[Int]("player_id", O.PrimaryKey)
+    def playerId = column[String]("player_id", O.PrimaryKey)
 
     def points = column[Int]("points")
 

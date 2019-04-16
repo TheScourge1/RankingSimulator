@@ -35,7 +35,7 @@ object LoadInputMatches extends App{
       count+=nextBatch.size
       println(s"$count matches written")
     } catch {
-      case ex: Exception => println("Error saving matches\n" + ex)
+      case ex: Exception => {println("Error saving matches\n" + ex); throw ex}
     }
   }
 }

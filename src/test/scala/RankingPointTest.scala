@@ -1,4 +1,4 @@
-import java.sql.Date
+import java.sql.{Date, Timestamp}
 import java.text.SimpleDateFormat
 
 import org.scalatest.FunSuite
@@ -14,12 +14,12 @@ class RankingPointTest extends FunSuite{
   var formate = new SimpleDateFormat("dd/MM/yyyy")
 
   test("saveRankingPoint"){
-    val rankingPoint = new RankingPoint(0,123456789,"MATCH_1",32,1032,16,0.75,
-      new Date(formate.parse("01/02/2019").getTime()))
+    val rankingPoint = new RankingPoint(0,"123456789","MATCH_1",32,1032,16,0.75,
+      new Timestamp(formate.parse("01/02/2019").getTime()))
     val future = rankingPointDAO.save(rankingPoint)
     val rankingPointOption = Await.result(future,1.seconds)
 
-    assert(rankingPointOption.intValue() != null)
+    assert(rankingPointOption > 0)
     println("Save value: "+rankingPointOption.intValue())
 
     val deleteOption = rankingPointDAO.delete(rankingPointOption.intValue() )

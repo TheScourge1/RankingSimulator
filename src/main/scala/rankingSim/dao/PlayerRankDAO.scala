@@ -15,7 +15,7 @@ object PlayerRankDAO extends MySQLDB   {
     db.run(table.result)
   }
 
-  def save(rankBalance: PlayerRank): Future[Int] ={
+  def save(rankBalance: PlayerRank): Future[String] ={
     val insertVal = {table returning table.map(_.playerId) +=rankBalance}
     db.run(insertVal)
   }
