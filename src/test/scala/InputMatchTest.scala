@@ -1,7 +1,7 @@
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 
-import rankingSim.dao.InputMatchDAO
+import rankingSim.dao.InputMatchRepo
 import org.scalatest.FunSuite
 import rankingSim.models.InputMatch
 
@@ -10,7 +10,7 @@ import scala.concurrent.duration._
 
 class InputMatchTest extends FunSuite{
 
-  val inputMatchDAO = InputMatchDAO
+  val inputMatchDAO = new InputMatchRepo
   var formate = new SimpleDateFormat("dd/MM/yyyy")
 
   test("getInputMatch"){

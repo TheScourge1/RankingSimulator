@@ -2,19 +2,19 @@ import java.sql.{Date, Timestamp}
 import java.text.SimpleDateFormat
 
 import org.scalatest.FunSuite
-import rankingSim.dao.{PlayersDAO, RankingPointsDAO}
-import rankingSim.models.RankingPoint
+import rankingSim.dao.{RankingPointsRepo}
+import rankingSim.models.PlayerMatchPoint
 
 import scala.concurrent.Await
 import scala.concurrent.duration._
 
-class RankingPointTest extends FunSuite{
+class PlayerMatchPointTest extends FunSuite{
 
-  val rankingPointDAO = RankingPointsDAO
+  val rankingPointDAO = new RankingPointsRepo
   var formate = new SimpleDateFormat("dd/MM/yyyy")
 
   test("saveRankingPoint"){
-    val rankingPoint = new RankingPoint(0,"123456789","MATCH_1",32,1032,16,0.75,
+    val rankingPoint = new PlayerMatchPoint(0,"123456789","MATCH_1",32,1032,16,0.75,
       new Timestamp(formate.parse("01/02/2019").getTime()))
     val future = rankingPointDAO.save(rankingPoint)
     val rankingPointOption = Await.result(future,1.seconds)

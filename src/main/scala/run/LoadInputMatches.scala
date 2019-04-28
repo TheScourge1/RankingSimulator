@@ -1,7 +1,7 @@
 package run
 
 import scala.io.Source
-import rankingSim.dao.InputMatchDAO
+import rankingSim.dao.InputMatchRepo
 import rankingSim.models.InputMatch
 
 import scala.concurrent.Await
@@ -15,7 +15,7 @@ object LoadInputMatches extends App{
     return Source.fromInputStream(fileHandle).getLines.toSeq
   }
 
-  val inputMatchDao = InputMatchDAO
+  val inputMatchDao = new InputMatchRepo
 
  // var matches = readFile("PBA_COMP_20182019.csv")
   var matches = readFile("PBO_20172018.csv")

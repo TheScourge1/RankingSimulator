@@ -1,12 +1,12 @@
 import org.scalatest.FunSuite
-import rankingSim.dao.{PlayerRankDAO}
+import rankingSim.dao.{PlayerRankRepo}
 
 import scala.concurrent.Await
 import scala.concurrent.duration._
 
 class RankBalanceTest extends FunSuite{
 
-  val rankBalanceDAO = PlayerRankDAO
+  val rankBalanceDAO = new PlayerRankRepo
 
   test("getPlayer"){
     val future = rankBalanceDAO.getAll

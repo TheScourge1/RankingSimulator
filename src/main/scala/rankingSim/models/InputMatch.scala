@@ -1,8 +1,9 @@
 package rankingSim.models
 
-import java.sql.{Timestamp}
+import java.sql.Timestamp
 import java.text.SimpleDateFormat
 
+import GenericSlick.{BaseEntity, BaseTable}
 import slick.lifted.Tag
 import slick.jdbc.MySQLProfile.api._
 
@@ -24,7 +25,7 @@ case class InputMatch(
                        set2Team2: Int,
                        set3Team1: Int,
                        set3Team2: Int
-)
+) extends BaseEntity
 
 //for reading from csv
 object InputMatch{
@@ -53,8 +54,7 @@ object InputMatch{
   }
 }
 
-class InputMatches(tag: Tag) extends Table[InputMatch](tag, "inputmatch") {
-  def id = column[Int]("id",O.PrimaryKey,O.AutoInc)
+class InputMatchTable(tag: Tag) extends BaseTable[InputMatch](tag, None,"inputmatch") {
   def tournamentId = column[Int]("tournamentid")
   def teammatchId = column[Int]("teammatchId")
   def matchDate = column[Timestamp]("match_date")

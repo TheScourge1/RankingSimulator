@@ -3,15 +3,16 @@ package rankingSim.models
 import java.sql.Date
 import java.text.SimpleDateFormat
 
+import GenericSlick.{BaseEntity, BaseTable}
 import slick.lifted.Tag
 import slick.jdbc.MySQLProfile.api._
 
 
-  case class Player(id: Int,
+  case class Player (id: Int,
                     playerId: String,
                     name: String,
                     rankDate: Date,
-                    rank: String)
+                    rank: String) extends BaseEntity
 
 
 //for reading from csv
@@ -30,9 +31,9 @@ object Player{
 }
 
 
-  class Players(tag: Tag) extends Table[Player](tag, "PlayerRanking") {
+  class PlayerTable(tag: Tag) extends BaseTable[Player](tag, None,"Player") {
 
-    def id = column[Int]("id", O.PrimaryKey,O.AutoInc)
+   // def id = column[Int]("id", O.PrimaryKey,O.AutoInc)
 
     def playerId = column[String]("player_id")
 

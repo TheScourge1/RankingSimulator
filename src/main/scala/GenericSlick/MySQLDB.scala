@@ -1,4 +1,4 @@
-package rankingSim.dao
+package GenericSlick
 
 import slick.jdbc.JdbcBackend.Database
 

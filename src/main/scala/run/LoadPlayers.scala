@@ -1,6 +1,6 @@
 package run
 
-import rankingSim.dao.PlayersDAO
+import rankingSim.dao.PlayerRepo
 import rankingSim.models.{InputMatch, Player}
 
 import scala.concurrent.Await
@@ -15,7 +15,7 @@ object LoadPlayers extends App{
     return Source.fromInputStream(fileHandle).getLines.toSeq
   }
 
-  val inputPlayerDao = PlayersDAO
+  val inputPlayerDao = new PlayerRepo
 
   var players = readFile("BVLA_HE_20190213-103912_2.csv")
   println("Loading player data: "+players.size)

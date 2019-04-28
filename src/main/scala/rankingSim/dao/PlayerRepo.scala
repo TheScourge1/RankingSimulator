@@ -1,11 +1,11 @@
 package rankingSim.dao
 
-import rankingSim.models.{Player, Players}
+import GenericSlick.BaseRepo
+import rankingSim.models.{Player, PlayerTable}
+import slick.lifted.TableQuery
 
-import scala.concurrent.Future
-
-object PlayersDAO extends MySQLDB   {
-  import this.profile.api._
+class PlayerRepo extends BaseRepo[PlayerTable,Player](TableQuery[PlayerTable])   {
+/*  import this.profile.api._
 
   val table = TableQuery[Players]
 
@@ -23,6 +23,6 @@ object PlayersDAO extends MySQLDB   {
   def save(players: Seq[Player]): Future[Option[Int]] ={
     val insertBatch: DBIO[Option[Int]] = table ++=players
     db.run(insertBatch)
-  }
+  }*/
 
 }
