@@ -28,8 +28,6 @@ object CalcEloRatings extends App{
 
   var kFunction = (r1 :PlayerRank,r2 : PlayerRank) => 32
 
-  //retrievedMatches = retrievedMatches.filter(game => game.team1Player1MemberId == "50047635" || game.team2Player1MemberId == "50047635"  )
-
   retrievedMatches = retrievedMatches
     .filter(game => game.winner == "1" || game.winner == "2")
     .sortWith((game1,game2) => game1.matchDate.before(game2.matchDate))
@@ -45,8 +43,7 @@ object CalcEloRatings extends App{
       res
     })
 
-  //rankResult.foreach(println)
-  println("Results processed: "+rankResult.size*2)
+  println("Results processed: "+rankResult.size*2 + " saving result ...")
 
   players.filter(p => playerMap(p.playerId).points != p.points).foreach(p => playerRankDAO.update(playerMap(p.playerId)))
 
@@ -58,10 +55,4 @@ object CalcEloRatings extends App{
 
   println("All date processed!")
 
-/*
-  rankResults.onComplete {
-    case Success(value) => println("The final value: "+value)
-    case Failure(e) => println("Error: ");e.printStackTrace()
-  }
-*/
 }
